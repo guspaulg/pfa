@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <title>Peru Fight academy </title>
+
+    <link href = "{{asset('css/bootstrap.css')}}" rel="stylesheet" media="screen">
+    <link href = "{{asset('css/lomio.css')}}" rel="stylesheet" type="text/css" >
+    <link href = "{{asset('css/dashboard.css')}}" rel="stylesheet" type="text/css" >
+
+    <script src = "{{asset('http://code.jquery.com/jquery.js')}}"></script>
+    <script src = "{{asset('js/bootstrap.min.js')}}"></script>
+
+    <Link  href = "{{asset('css/estilos.css')}}" rel = "stylesheet" type = "text/css"  />
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <a href="http://www.incuba.pe"><img src="{{asset('imagenes/logo4.png')}}" class="logo"></a>
+            <div class="navbar-header">
+              <a class="navbar-brand" href="{{ path('logout', { 'slug': '' } )}}" >Cerrar Sesión</a>
+            </div>
+            
+          </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            
+            <li><a href="{{ path('pfa_sistema_homepage', { 'slug': '' } )}}">Inicio <span class="sr-only">(current)</span></a></li>
+            
+            <li><a href="{{ path('Formulario', { 'slug': '' } )}}">Matricular</a></li>
+
+            <li class="active"><a href="#">Buscar</a></li>
+
+            <li><a href="{{ path('filtrar', { 'filtrar': '' } )}}">Filtrar</a></li>
+
+            <li><a href="{{ path('agentes', { 'slug': '' } )}}">Agentes</a></li>   
+
+            <li><a href="{{ path('ingresos', { 'slug': '' } )}}">Ingresos</a></li>
+
+          </ul>
+        
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-7 col-md-offset-2 main">
+
+            {{ form_start(form) }}
+
+                <div class="col-md-7 col-sm-7">
+                    
+                    <div class="col-md-4 col-sm-4">
+                    Ingresar D.N.I.
+                    </div>
+
+                    <div class="col-md-5 col-sm-5">
+                    {{ form_widget(form.dni, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+
+                    <div class="col-md-3 col-sm-3">
+                    {{ form_widget(form.buscar, {'attr' : {'class':'btn btn-primary' }} ) }} 
+                    </div>
+
+                </div>
+
+               
+            {{ form_end(form) }}
+
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                      <th>Apellido P.</th>
+                      <th>Apellido M.</th>
+                      <th>Nombres</th>
+                      <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for result in resultado %}
+
+                    <tr>
+                        <td class="fila_2_n">{{result.apellidop}}</td>
+
+                        <td class="fila_2_n">{{result.apellidom}}</td>
+
+                        <td class="fila_2_n">{{result.nombre}}</td>
+                
+                        <td class="">
+                            <a href="{{ url('alumno', { 'id': result.id }) }}">
+                                <img src="{{asset('imagenes/icon-lupa.png')}}" width="20" height="20"/> 
+                            </a>    
+                        </td>
+                    </tr>
+
+                {% endfor%}
+                </tbody>
+            </table>
+
+        </div>
+        
+    </div>
+</div>
+
+</body>
+
+
+</html>

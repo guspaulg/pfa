@@ -1,0 +1,45 @@
+login:
+    pattern:   /login
+    defaults:  { _controller: PfaSistemaBundle:Login:entrar }
+login_check:
+    pattern:   /login_check
+
+pfa_sistema_homepage:
+    path:     /ginicio
+    defaults: { _controller: PfaSistemaBundle:Inicio:index }
+
+Formulario:
+    path:       /gformulario/
+    defaults:  { _controller: PfaSistemaBundle:Matricula:formulario }
+
+logout:
+    path:   /logout
+
+alumno:
+    path:      /galumno/{id}
+    defaults:  { _controller: PfaSistemaBundle:Alumno:mostrar}
+
+filtrar:
+    path:      /gfiltrar
+    defaults:  { _controller: PfaSistemaBundle:Filtro:buscar}
+
+buscar:
+    path:      /gbuscar
+    defaults:  { _controller: PfaSistemaBundle:Alumno:buscar}
+
+ingresos:
+    path:      /gingresos
+    defaults:  { _controller: PfaSistemaBundle:Ingresos:buscar}
+
+
+asistencia:
+    path:      /gasistencia/{id}
+    defaults:  { _controller: PfaSistemaBundle:Alumno:asistencia}
+
+editar:
+    path:      /geditar/{id}
+    defaults:  { _controller: PfaSistemaBundle:Alumno:editar}
+
+agentes:
+    path:      /gagentes
+    defaults:  { _controller: PfaSistemaBundle:Agentes:ver }

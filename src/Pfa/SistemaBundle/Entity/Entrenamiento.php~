@@ -1,0 +1,95 @@
+<?php
+
+namespace Pfa\SistemaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Entrenamiento
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Entrenamiento
+{
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+     /**
+     * @ORM\Column(type="date")
+     */
+    protected $fecha_inicio;
+
+    /**
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    protected $precio;
+
+     /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $sexo;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $veces;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $idpago;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $lunes;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $martes;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $miercoles;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $jueves;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $viernes;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $sabado;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $domingo;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<title>Peru Fight academy</title>  
+
+	<Link  href = "{{asset('css/detalle_alumno.css')}}" rel = "stylesheet" type = "text/css"  />
+
+	title>Fight and Fitness</title>
+
+
+ 	<link href = "{{asset('css/bootstrap.css')}}" rel="stylesheet" media="screen">
+	<link href = "{{asset('css/lomio.css')}}" rel="stylesheet" type="text/css" >
+	<link href = "{{asset('css/dashboard.css')}}" rel="stylesheet" type="text/css" >
+
+	<script src = "{{asset('http://code.jquery.com/jquery.js')}}"></script>
+	<script src = "{{asset('js/bootstrap.min.js')}}"></script>
+
+	<script type="text/javascript">
+
+	    function mostrar(){
+	        document.getElementById('rematricula').style.display='block';
+	    }
+	    function mostrar2(){
+	        document.getElementById('rematricula').style.display='none';
+	    }
+
+	</script>
+
+
+
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+      	<a href="http://www.incuba.pe"><img src="{{asset('imagenes/logo4.png')}}" class="logo"></a>
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{{ path('logout', { 'slug': '' } )}}" >Cerrar Sesión</a>
+        </div>
+        
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      	<div class="row">
+	        <div class="col-md-2 sidebar">
+		          <ul class="nav nav-sidebar">
+			            <li><a href="{{ path('pfa_sistema_homepage', { 'slug': '' } )}}">Inicio <span class="sr-only">(current)</span></a></li>
+			            
+			            <li><a href= "{{ path('Formulario', { 'slug': '' } )}}"  >Matricular</a></li>
+
+			            <li><a href="{{ path('buscar', { 'slug': '' } )}}">Buscar</a></li>
+
+			            <li><a href="{{ path('filtrar', { 'slug': '' } )}}">Filtrar</a></li>
+
+			            <li><a href="{{ path('agentes', { 'slug': '' } )}}">Agentes</a></li>   
+
+			            <li><a href="{{ path('ingresos', { 'slug': '' } )}}">Ingresos</a></li>
+		          </ul>
+	        
+	        </div>
+
+	        <div class="col-md-5 col-md-offset-2">
+
+	        	<div id="cuadro2">
+
+	        	<a title="ASISTENCIA" href="{{ path('asistencia', { 'id': id  } )}}" class="aimagen">	
+	    			<img src="{{asset('imagenes/asistencia.png')}}"/>
+	    		</a>
+				
+				<a title="EDITAR" href="{{ path('editar', { 'id': id  } )}}" class="aimagen">	
+	    			<img src="{{asset('imagenes/actualizar.png')}}"/>
+	    		</a>
+
+	    		<a title="MATRICULAR" href="#" class="aimagen" onclick="mostrar()">	
+	    			<img src="{{asset('imagenes/rematricula.png')}}"/>
+	    		</a>
+
+	    		<div class="nombre">
+	    		</br>
+		    		
+		    		{% if date(alumnop[0].fechafinal) > date() %}
+							
+							{% if date(alumnop[0].fechafinal) < date('+10days')  %}
+
+							<div class="fila_1_r"> {{alumno.apellidop}} {{alumno.apellidom}} {{alumno.nombre}} </div> 
+
+							{% else %}	
+
+							<div class="fila_1_v"> {{alumno.apellidop}} {{alumno.apellidom}} {{alumno.nombre}} </div> 
+
+							{% endif %}
+
+					{% endif %}
+
+					{% if date(alumnop[0].fechafinal) < date() %}
+
+							<div class="fila_1_n"> {{alumno.apellidop}} {{alumno.apellidom}} {{alumno.nombre}} </div> 
+					
+					{% endif %}
+
+
+		    	</div>
+
+		    	<hr>
+
+		    	<div>
+		    		<div id="casistencia">
+		    			<div  class="datos">
+		    				Asistencias a la fecha
+		    			</div>
+		    			<div class="asistencia">
+		    				{{ alumnop[0].vecesasistencia}}
+		    			</div>
+
+		    		</div> 
+
+		    		<div id="casistencia2">
+		    			<div class="datos">
+		    				de un total de:
+		    			</div>
+		    			<div class="asistencia">
+		    				{{ alumnop[0].vecestotales}}
+		    			</div>
+
+		    		</div> 
+
+		    	</div>
+
+		    	<div class="datos">
+			    	<p>
+			    		Dni: {{alumno.dni}} <br>
+			    		Télefono Fijo: {{alumno.telefonof}} <br>
+			    		Télefono Celular: {{alumno.telefonoc}} <br>
+			    		Correo: {{alumno.email}} <br>
+			    		Cumpleaños: {{alumno.cumple|date("m/d/Y")}} <br>
+			    	</p> 
+		    	</div>
+
+		    	<h2 class="sub-header">Horario</h2>
+         		<div class="table-responsive">
+
+         			<table class="table table-striped">
+
+		              	<thead>
+			                <tr>
+			                  <th>Lunes</th>
+			                  <th>Martes</th>
+			                  <th>Miercoles</th>
+			                  <th>Jueves</th>
+			                  <th>Viernes</th>
+			                  <th>Sabado</th>
+			                  <th>Domingo</th>
+			                </tr>
+		              	</thead>
+
+		              	<tbody>
+	               
+								<tr>
+								<td > {{alumnop[0].lunes}}</td>
+								<td > {{alumnop[0].martes}}</td>
+								<td > {{alumnop[0].miercoles}}</td>
+								<td > {{alumnop[0].jueves}}</td>
+								<td > {{alumnop[0].viernes}}</td>
+								<td > {{alumnop[0].sabado}}</td>
+								<td > {{alumnop[0].domingo}}</td>
+								</tr>
+			              
+		              	</tbody>
+		            </table>
+
+		            <h2 class="sub-header">Historial de Matricula</h2>
+			    	<table class="table table-striped">
+
+		              	<thead>
+			                <tr>
+			                  <th>F. Inicio</th>
+			                  <th>F. Final</th>
+			                  <th>Disciplina</th>
+			                  <th>Precio</th>
+			                  <th>Pago</th>
+			                  <th>Agente</th>
+			                </tr>
+		              	</thead>
+
+		              	<tbody>
+	                
+		              		{% for result in alumnop%}
+
+									<tr>
+
+										<td > {{result.fechainicio|date("d/m/Y")}}</td>
+
+										<td > {{result.fechafinal|date("d/m/Y")}}</td>
+
+										{% set disc = ''%}
+										{% set disc2 = ''%}
+										{% set disc3 = ''%}
+										{% set disc4 = ''%}
+
+										{%if result.disciplina1=="1"%}  {% set disc = 'MT' %} {%endif%}
+										{%if result.disciplina1=="2"%}  {% set disc = 'MM'%} {%endif%}
+										{%if result.disciplina1=="3"%}  {% set disc = 'B' %} {%endif%}
+										{%if result.disciplina1=="4"%}  {% set disc = 'J'%} {%endif%}
+										{%if result.disciplina1=="5"%}  {% set disc = 'V' %} {%endif%}
+										{%if result.disciplina1=="6"%}  {% set disc = 'EF' %} {%endif%}
+										{%if result.disciplina1=="7"%}  {% set disc = 'Y' %} {%endif%}
+
+										{%if result.disciplina2=="1"%}  {% set disc2 = ' - MT' %} {%endif%}
+										{%if result.disciplina2=="2"%}  {% set disc2 = ' - MM'%} {%endif%}
+										{%if result.disciplina2=="3"%}  {% set disc2 = ' - B' %} {%endif%}
+										{%if result.disciplina2=="4"%}  {% set disc2 = ' - J'%} {%endif%}
+										{%if result.disciplina2=="6"%}  {% set disc2 = ' - EF' %} {%endif%}
+										{%if result.disciplina2=="7"%}  {% set disc2 = ' - Y' %} {%endif%}
+
+
+										{%if result.disciplina3=="1"%}  {% set disc3 = ' - MT' %} {%endif%}
+										{%if result.disciplina3=="2"%}  {% set disc3 = ' - MM'%} {%endif%}
+										{%if result.disciplina3=="3"%}  {% set disc3 = ' - B' %} {%endif%}
+										{%if result.disciplina3=="4"%}  {% set disc3 = ' - J'%} {%endif%}
+										{%if result.disciplina3=="6"%}  {% set disc3 = ' - EF' %} {%endif%}
+										{%if result.disciplina3=="7"%}  {% set disc3 = ' - Y' %} {%endif%}
+
+
+										{%if result.disciplina4=="1"%}  {% set disc4 = ' - MT' %} {%endif%}
+										{%if result.disciplina4=="2"%}  {% set disc4 = ' - MM'%} {%endif%}
+										{%if result.disciplina4=="3"%}  {% set disc4 = ' - B' %} {%endif%}
+										{%if result.disciplina4=="4"%}  {% set disc4 = ' - J'%} {%endif%}
+										{%if result.disciplina4=="6"%}  {% set disc4 = '- EF' %} {%endif%}
+										{%if result.disciplina4=="7"%}  {% set disc4 = ' - Y' %} {%endif%}
+
+
+										<td>{{disc}}  {{disc2}} {{disc3}} {{disc4}} </td>
+
+										<td> S/. {{result.precio}}</td>
+
+										{%if result.tipodepago=="1"%}
+										<td>Efec</td>
+										{%endif%}
+										
+										{%if result.tipodepago=="2"%}
+										<td> Tar</td>
+										{%endif%}
+
+										{%if result.agente=="1"%}
+										<td>Arturo</td>
+										{%endif%}
+										
+										{%if result.agente=="2"%}
+										<td> Cristina</td>
+										{%endif%}
+
+										{%if result.agente=="3"%}
+										<td>Veronica</td>
+										{%endif%}
+
+										{%if result.agente=="4"%}
+										<td> Jose</td>
+										{%endif%}
+
+										{%if result.agente=="5"%}
+										<td>Viviane</td>
+										{%endif%}
+
+										{%if result.agente=="6"%}
+										<td> Luigi</td>
+										{%endif%}
+
+									</tr>
+								{% endfor%}
+			                
+		              	</tbody>
+		            </table>
+
+		        </div>
+
+
+      		</div>
+    	</div> 
+
+
+        <div class="col-md-3 nuevamatricula" id="rematricula">
+
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+         
+            <div class="nuevamatriculatext"> Nueva Matricula del Alumno: </div>
+
+            <div>
+            	</br>
+            	<div>
+                    <div class="col-sm-4"> 
+                    Inicio
+                    </div>
+                    <div class="col-sm-8"> 
+                    {{ form_errors(form.fecha_inicio) }}
+                    {{ form_widget(form.fecha_inicio, { 'attr': { 'class': 'form-group' , 'type':'datetime' } }) }}
+                    </div>
+                </div>
+                </br></br>
+
+                <div>
+                    <div class="col-sm-6">
+                    {{ form_label(form.meses) }}
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.meses, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br></br>
+
+                <div>
+	                <div class="col-sm-6">
+	                    {{ form_label(form.veces) }}
+	                </div>
+	                <div class="col-sm-6">
+	                    {{ form_errors(form.veces) }}
+	                    {{ form_widget(form.veces, { 'attr': {'class': 'form-control' }} ) }}
+	                </div>
+                </div>
+                </br></br></br></br>
+                <div>
+                	<div class="col-sm-6">
+                    Disciplina 1
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.disc1, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br> </br>
+                <div>
+                    <div class="col-sm-6">
+                    Disciplina 2
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.disc2, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br></br>
+                <div>
+                    <div class="col-sm-6">
+                    Disciplina 3
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.disc3, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br></br>
+                <div>
+                    <div class="col-sm-6">
+                    Disciplina 4
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.disc4, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br></br>
+
+
+
+                 </br></br>
+                <div>
+                    <div class="col-sm-6">
+                    {{ form_label(form.lunes) }}
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.lunes, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br></br>
+                <div>
+                    <div class="col-sm-6">
+                    {{ form_label(form.martes) }}
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.martes, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br></br>
+                <div>
+                    <div class="col-sm-6">
+                    {{ form_label(form.miercoles) }}
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.miercoles, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br></br>
+                <div>
+                    <div class="col-sm-6">
+                    {{ form_label(form.jueves) }}
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.jueves, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br></br>
+                <div>
+                    <div class="col-sm-6">
+                    {{ form_label(form.viernes) }}
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.viernes, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br></br>
+                <div>
+                    <div class="col-sm-6">
+                    {{ form_label(form.sabado) }}
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.sabado, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br></br>
+                 <div>
+                    <div class="col-sm-6">
+                    {{ form_label(form.domingo) }}
+                    </div>
+                    <div class="col-sm-6">
+                    {{ form_widget(form.domingo, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+                </br></br>
+
+                <div>
+                    <div class="col-sm-6">
+                        ¿ Quien matricula?
+                    </div>
+                    <div class="col-sm-6">
+                        {{ form_errors(form.agente) }}
+                        {{ form_widget(form.agente, { 'attr': {'class': 'form-control' }} ) }}
+                    </div>
+                </div>
+
+                </br></br></br>
+
+                <div>
+                    {{ form_errors(form.tipodepago) }}
+                    {{ form_widget(form.tipodepago, { 'attr': {'class': 'form-control' }} ) }}
+                </div>
+				</br>                
+                <div>
+                    {{ form_errors(form.precio) }}
+                    {{ form_widget(form.precio, { 'attr': {'class': 'form-control' , 'placeholder' :'S/. Monto en soles'   } }) }}
+                </div>
+                </br>
+                <div class="col-sm-5">
+                 {{ form_widget(form.matricular, {'attr' : {'class':'btn btn-primary' }}  )  }}
+                </div> 
+
+                <div class="col-sm-5 btn btn-primary rojop" onclick="mostrar2()">
+                 Cancelar
+                </div>  
+
+            </div>
+                     
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>	  
+    </br></br></br></br>
+
+ </div> 
+  
+  
+
+</body>
+</html>

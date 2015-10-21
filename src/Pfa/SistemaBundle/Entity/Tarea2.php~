@@ -1,0 +1,126 @@
+<?php
+
+namespace Pfa\SistemaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tarea2
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Tarea2
+{
+     /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $disc1;
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $disc2;
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $disc3;
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $disc4;
+
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    protected $fecha_inicio;
+
+     /**
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    protected $precio;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $tipodepago;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $veces;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $email;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $cumple;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $lunes;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $martes;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $miercoles;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $jueves;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $viernes;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $sabado;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $domingo;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $meses;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $agente;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+

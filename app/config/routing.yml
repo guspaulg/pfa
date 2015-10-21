@@ -1,0 +1,4 @@
+pfa_sistema:
+    resource: "@PfaSistemaBundle/Resources/config/routing.yml"
+    prefix:   /
+

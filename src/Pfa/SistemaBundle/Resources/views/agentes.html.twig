@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <title>Peru Fight academy </title>
+
+    <link href = "{{asset('css/bootstrap.css')}}" rel="stylesheet" media="screen">
+    <link href = "{{asset('css/lomio.css')}}" rel="stylesheet" type="text/css" >
+    <link href = "{{asset('css/dashboard.css')}}" rel="stylesheet" type="text/css" >
+
+    <script src = "{{asset('http://code.jquery.com/jquery.js')}}"></script>
+    <script src = "{{asset('js/bootstrap.min.js')}}"></script>
+
+    <Link  href = "{{asset('css/estilos.css')}}" rel = "stylesheet" type = "text/css"  />
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <a href="http://www.incuba.pe"><img src="{{asset('imagenes/logo4.png')}}" class="logo"></a>
+            <div class="navbar-header">
+              <a class="navbar-brand" href="{{ path('logout', { 'slug': '' } )}}" >Cerrar Sesión</a>
+            </div>
+            
+          </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            
+            <li><a href="{{ path('pfa_sistema_homepage', { 'slug': '' } )}}">Inicio <span class="sr-only">(current)</span></a></li>
+            
+            <li><a href="{{ path('Formulario', { 'slug': '' } )}}">Matricular</a></li>
+
+            <li ><a href="{{ path('buscar', { 'buscar': '' } )}}">Buscar</a></li>
+
+            <li><a href="{{ path('filtrar', { 'filtrar': '' } )}}">Filtrar</a></li>
+
+            <li class="active"><a href="#">Agentes</a></li>   
+
+            <li ><a href="{{ path('ingresos', { 'slug': '' } )}}">Ingresos</a></li>
+
+          </ul>
+        
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-4 col-md-offset-2 main">
+
+            {{ form_start(form) }}
+   
+            {{ form_end(form) }}
+
+              {% set cantidad1 = 0 %}
+              {% set cantidad2 = 0 %}
+              {% set cantidad3 = 0 %}
+              {% set cantidad4 = 0 %}
+              {% set cantidad5 = 0 %}
+              {% set cantidad6 = 0 %}
+
+              {% for result in resultado %}
+                    {% if result.fechainicio >= fechai  %}
+                        {% if result.fechainicio <= fechaf  %}
+
+                                {% if result.agente == 1  %}
+                                      {% set cantidad1 = 1 + cantidad1%}
+                                {%endif%}
+
+                                {% if result.agente == 2  %}
+                                      {% set cantidad2 = 1 + cantidad2%}
+                                {%endif%}
+                                
+                                {% if result.agente == 3  %}
+                                      {% set cantidad3 = 1 + cantidad3%}
+                                {%endif%}
+                                
+                                {% if result.agente == 4  %}
+                                      {% set cantidad4 = 1 + cantidad4%}
+                                {%endif%}
+                                
+                                {% if result.agente == 5  %}
+                                      {% set cantidad5 = 1 + cantidad5%}
+                                {%endif%}
+
+                                {% if result.agente == 6  %}
+                                      {% set cantidad6 = 1 + cantidad6%}
+                                {%endif%}
+
+                        {%endif%}
+                    {%endif%}
+              {% endfor%}
+            <div class="col-md-8">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                          <th> Agente</th>
+                          <th>Matriculas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <th>Arturo</th>
+                          <th class="asul">{{cantidad1}}</th>
+                        </tr>
+
+                        <tr>
+                          <th>Cristina</th>
+                          <th class="asul">{{cantidad2}}</th>
+                        </tr>
+
+                        <tr>
+                          <th>Veronica</th>
+                          <th class="asul">{{cantidad3}}</th>
+                        </tr>
+
+                        <tr>
+                          <th>Jose</th>
+                          <th class="asul">{{cantidad4}}</th>
+                        </tr>
+
+                        <tr>
+                          <th>Viviane</th>
+                          <th class="asul">{{cantidad5}}</th>
+                        </tr>
+
+                        <tr>
+                          <th>Luigi</th>
+                          <th class="asul">{{cantidad6}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+
+</body>
+

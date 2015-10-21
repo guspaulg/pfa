@@ -1,0 +1,81 @@
+<?php
+
+namespace Pfa\SistemaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Filtro
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Filtro
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=4)
+     */
+    private $disciplina;
+
+    /**
+     * @ORM\Column(type="string", length=4)
+     */
+    private $hora;
+
+    /**
+     * @ORM\Column(type="string", length=4)
+     */
+    private $dia;
+
+    /**
+     * @ORM\Column(type="string", length=4)
+     */
+    private $vence;
+
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set disciplina
+     *
+     * @param string $disciplina
+     *
+     * @return Filtro
+     */
+    public function setDisciplina($disciplina)
+    {
+        $this->disciplina = $disciplina;
+
+        return $this;
+    }
+
+    /**
+     * Get disciplina
+     *
+     * @return string
+     */
+    public function getDisciplina()
+    {
+        return $this->disciplina;
+    }
+}

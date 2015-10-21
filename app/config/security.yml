@@ -1,0 +1,35 @@
+# app/config/security.yml
+security:
+    firewalls:
+        secured_area:
+            pattern:    ^/
+            anonymous: ~
+            form_login:
+                login_path:  login
+                check_path:  login_check
+                default_target_path: /ginicio
+            logout:
+                path:   /logout
+                target: /login
+
+
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    access_control:
+        - { path: ^/g, roles: ROLE_USER }
+        - { path: ^/g, roles: ROLE_ADMIN }
+
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    luigi:  { password: pfa-4086, roles: 'ROLE_USER' }
+
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+
